@@ -11,11 +11,11 @@ server.connection({
 var io = require("socket.io")(server.listener);
 
 io.on("connection", function (socket) {
-  console.log('connection on');
+  console.log("connection on");
   socket.emit("connectionSuccess")
 
   socket.on("task-added", function (task){
-    // console.log("task received on server", task);
+
     redis.storeTask(task, function() {
       var allTasks = redis.readAllTasks(function(err, data) {
         if (err) {
