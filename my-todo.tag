@@ -12,8 +12,17 @@ socket.on("connectionSuccess", function(socket) {
     <input type="text" name="task">
     <input type="submit">
   </form>
+  <ul class="task-list"></ul>
 </my-todo>
 
-function addTask () {
-  socket.emit("task-added")
+
+
+function addTask (e) {
+
+  e.preventDefault();
+  var task = this.task.value;
+  console.log(task);
+  socket.emit("task-added", task);
+
+  $('.task-list').append("<li>" + task + "</li>");
 }
