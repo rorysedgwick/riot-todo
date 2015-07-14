@@ -1,3 +1,4 @@
+var path = require("path");
 var handler = require("./handlers.js");
 
 var routes = [
@@ -6,6 +7,16 @@ var routes = [
     path: "/",
     method: "GET",
     handler: handler.home
+  },
+
+  {
+    path: "/{param}",
+    method: "GET",
+    handler: {
+      directory: {
+        path: path.join(__dirname + "/../")
+      }
+    }
   }
 
 ]
