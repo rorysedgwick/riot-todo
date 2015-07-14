@@ -14,6 +14,9 @@ io.on("connection", function (socket) {
   console.log('connection on');
   socket.emit("connectionSuccess")
   // socket.on('newComment', handlerSocket.post(socket));
+  socket.on("task-added", function (socket){
+    console.log("task received");
+  });
 });
 
 // server.views({

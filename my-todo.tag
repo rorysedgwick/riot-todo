@@ -8,8 +8,12 @@ socket.on("connectionSuccess", function(socket) {
 })
 
 <my-todo>
-  <form onsubmit={  }>
+  <form onsubmit={ addTask }>
     <input type="text" name="task">
     <input type="submit">
   </form>
 </my-todo>
+
+function addTask () {
+  socket.emit("task-added")
+}
