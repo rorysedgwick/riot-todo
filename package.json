@@ -9,7 +9,8 @@
   },
   "scripts": {
     "riot": "riot my-todo.tag my-todo.js & node api/server.js",
-    "test": ""
+    "test": "",
+    "start": "node api/server.js"
   },
   "repository": {
     "type": "git",
