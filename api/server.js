@@ -1,5 +1,6 @@
 var Hapi           = require('hapi');
 var routes         = require('./routes.js');
+var redis          = require("./redis.js");
 var server         = new Hapi.Server();
 
 server.connection({
@@ -10,12 +11,20 @@ server.connection({
 var io = require("socket.io")(server.listener);
 
 io.on("connection", function (socket) {
-
   console.log('connection on');
   socket.emit("connectionSuccess")
-  // socket.on('newComment', handlerSocket.post(socket));
-  socket.on("task-added", function (socket){
-    console.log("task received");
+
+  socket.on("task-added", function (task){
+    // console.log("task received on server", task);
+    redis.storeTask(task, function() {
+      var allTasks = redis.readAllTasks(function(err, data) {
+        if (err) {
+           console.log("storeTask err", err);
+        } else {
+          socket.emit("allTasks", data);
+        }
+      });
+    });
   });
 });
 
