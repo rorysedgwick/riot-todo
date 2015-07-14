@@ -15,7 +15,7 @@ function readAllTasks(callback) {
 
   // Remove setTimeout when we have the time
   setTimeout(function() {
-    console.log("taskArray in readAllTasks: ", taskArray);
+    // console.log("taskArray in readAllTasks: ", taskArray);
     callback(null, taskArray);
   }, 500);
 };
@@ -30,7 +30,7 @@ function storeTask(task, callback) {
     var id = Math.floor(Math.random() * 1000);
     client.hmset(id, {
       "taskName": task,
-      "status": "not done",
+      "status": "not-done",
       "category": "red"
     }, callback);
     client.sadd("idSet", id, function(err, reply) {
