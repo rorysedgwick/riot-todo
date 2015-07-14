@@ -17,8 +17,14 @@ io.on("connection", function (socket) {
   socket.on("task-added", function (task){
     // console.log("task received on server", task);
     redis.storeTask(task, function() {
-      console.log("task passed to redis");
-    })
+      var allTasks = redis.readAllTasks(function(err, data) {
+        if (err) {
+           console.log("storeTask err", err);
+        } else {
+          socket.emit("allTasks", data);
+        }
+      });
+    });
   });
 });
 
