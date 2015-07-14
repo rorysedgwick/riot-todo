@@ -7,13 +7,14 @@ server.connection({
   port: Number(process.env.PORT) || 8000
 });
 
-// var io = require("socket.io")(server.listener);
+var io = require("socket.io")(server.listener);
 
-// io.on("connection", function (socket) {
+io.on("connection", function (socket) {
 
-//   console.log('connection on');
-//   socket.on('newComment', handlerSocket.post(socket));
-// });
+  console.log('connection on');
+  socket.emit("connectionSuccess")
+  // socket.on('newComment', handlerSocket.post(socket));
+});
 
 // server.views({
 //   engines: {

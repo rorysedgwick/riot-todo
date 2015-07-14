@@ -8,8 +8,7 @@
     "npm": "2.7.4"
   },
   "scripts": {
-    "riot": "riot my-todo.tag my-todo.js",
-    "start": "node api/server.js",
+    "riot": "riot my-todo.tag my-todo.js & node api/server.js",
     "test": ""
   },
   "repository": {
