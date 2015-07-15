@@ -14,18 +14,18 @@ To learn how to use riot, redis and socket.io together.
 - [x] Render all tasks to the main page from redis
 - [x] Add riot functionality
 - [x] Mark item as checked on click
-- [ ] Enable cross browser automatic re rendering
+- [x] Enable cross browser automatic re rendering
 - [x] Add categories when adding a task
 - [ ] Sort task list by something (category, time added, alphabetically)
 
 ##Biggest bugs
-- [ ] Remove setTimeout from `redis.js`
+- [x] Remove setTimeout from `redis.js`
 - [x] When we add a new task, they are all re-rendered
 
 ##Stretch and to-dos
 - [ ] Sort out file structure
 - [x] Add CSS
-- [ ] Add categories
+- [x] Add categories
 - [ ] Push to heroku
 
 Where we wanted to get to as a stretch goal for the day:

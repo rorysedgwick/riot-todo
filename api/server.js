@@ -48,7 +48,6 @@ io.on("connection", function (socket) {
         if (err) {
            console.log("status update error:", err);
         } else {
-          console.log("emitting status update");
           io.emit("update", data);
         }
       });
