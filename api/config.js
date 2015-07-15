@@ -1,3 +1,3 @@
 module.exports ={
-	url : process.env.REDISURL || require("../creds.json").url
+	url : process.env.REDISTOGO_URL || require("../creds.json").url
 };
