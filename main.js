@@ -2,7 +2,7 @@ var socket = io();
 
 // initial mount of riot tags with data from redis
 socket.on("allTasks", function(data) {
-  // console.log("allTasks:", data);
+  console.log("allTasks:", data);
   riot.mount("*", { tasks: data });
 });
 
