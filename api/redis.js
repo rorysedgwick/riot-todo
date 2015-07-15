@@ -20,8 +20,8 @@ function readAllTasks(callback) {
   // Remove setTimeout when we have the time
   setTimeout(function() {
     callback(null, taskArray);
-  }, 500);
-};
+  }, 50);
+}
 
 
 function storeTask(task, callback) {
