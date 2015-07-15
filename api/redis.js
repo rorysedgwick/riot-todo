@@ -5,43 +5,28 @@ var client = redis.createClient();
 function readAllTasks(callback) {
   var taskArray = [];
 
-
-//   client.smembers("idSet", function(err, reply) {
-//     var i;
-//     var len = reply.len;
-
-//     for (i = 0; i = len - 1; i += 1) {
-//       client.hgetall(reply[i], function(err, reply) {
-//         console.log("reply: ", reply);
-//         taskArray.push(reply[i])
-
-//         if (i === len - 1) {
-//           callback(null, taskArray);
-//         }
-//       });
-//     };
-//   });
-// }
-
-
-
   // fetches set of tasks ids
   client.smembers("idSet", function(err, reply) {
-    console.log("reply: ", reply);
-    reply.forEach(function(key) {
 
-      // for each id return all hash info
-      client.hgetall(key, function(err, reply) {
-        // console.log("reply: ", reply);
-        taskArray.push(reply);
+    var replyLength = reply.length;
+
+    if (replyLength > 0) {
+
+      reply.forEach(function(key) {
+
+        // for each id return all hash info
+        client.hgetall(key, function(err, reply) {
+          taskArray.push(reply);
+
+          if (taskArray.length === replyLength) {
+            callback(null, taskArray);
+          }
+        });
       });
-    });
+    } else {
+      callback(null, taskArray)
+    }
   });
-
-  // Remove setTimeout when we have the time
-  setTimeout(function() {
-    callback(null, taskArray);
-  }, 50);
 }
 
 function storeTask(task, category, callback) {

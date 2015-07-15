@@ -60,8 +60,4 @@ io.on("connection", function (socket) {
 
 server.route(routes);
 
-server.start(
-  console.log("server running at port " + server.info.port)
-);
-
 module.exports = server;
