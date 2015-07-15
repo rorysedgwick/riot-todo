@@ -20,8 +20,4 @@ var tasks;
     that.update();
   });
 
-
 </my-todo>
-
-
-

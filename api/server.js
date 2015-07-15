@@ -19,7 +19,7 @@ io.on("connection", function (socket) {
        console.log("readAllTasks error:", err);
     } else {
       socket.emit("allTasks", data);
-    };
+    }
   });
 
   // when new task is created, store it to redis
@@ -34,7 +34,7 @@ io.on("connection", function (socket) {
            console.log("readAllTasks error:", err);
         } else {
           socket.emit("update", data);
-        };
+        }
       });
     });
   });
@@ -49,7 +49,7 @@ io.on("connection", function (socket) {
            console.log("status update error:", err);
         } else {
           socket.emit("update", data);
-        };
+        }
       });
     });
   });
