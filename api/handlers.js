@@ -1,9 +1,9 @@
 var path  = require("path");
-var index = path.join(__dirname, "../index.html")
+var index = path.join(__dirname, "../index.html");
 
 module.exports = {
 
   home: function(request, reply) {
-    return reply.file(index)
+    return reply.file(index);
   }
-}
+};
