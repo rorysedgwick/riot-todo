@@ -10,11 +10,11 @@ var routes = [
   },
 
   {
-    path: "/{param}",
+    path: "/{param*}",
     method: "GET",
     handler: {
       directory: {
-        path: path.join(__dirname + "/../")
+        path: path.join(__dirname + "/../public/")
       }
     }
   }

@@ -1,5 +1,5 @@
 var path  = require("path");
-var index = path.join(__dirname, "../index.html");
+var index = path.join(__dirname, "../public/index.html");
 
 module.exports = {
 

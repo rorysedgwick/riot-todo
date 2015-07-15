@@ -26,6 +26,7 @@ var socket = io();
   var that = this;
   // when server sends new data, update task list
   socket.on("update", function(data) {
+
     console.log("updating tasks");
     opts.tasks = data;
     that.update();

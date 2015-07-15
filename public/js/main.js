@@ -12,8 +12,9 @@ function addTask (e) {
 
   var task = this.task.value;
   var category = e.target.className || "black";
-  console.log(e.target.className);
+
   socket.emit("task-submitted", task, category);
+
   // reset text field to blank
   this.task.value = "";
 }
