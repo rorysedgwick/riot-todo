@@ -15,6 +15,7 @@ To learn how to use riot, redis and socket.io together.
 - [x] Add riot functionality
 - [x] Mark item as checked on click
 - [ ] Enable cross browser automatic re rendering
+- [ ] Add categories when adding a task
 - [ ] Sort task list by something (category, time added, alphabetically)
 
 ##Biggest bugs
@@ -23,7 +24,7 @@ To learn how to use riot, redis and socket.io together.
 
 ##Stretch and to-dos
 - [ ] Sort out file structure
-- [ ] Add CSS
+- [x] Add CSS
 - [ ] Add categories
 - [ ] Push to heroku
 
