@@ -4,7 +4,7 @@
 A simple to do app built using riot.js, redis, and socket.io. What can we do in a day?
 
 ##Why?
-To learn how to use riot, redis and socket together.
+To learn how to use riot, redis and socket.io together.
 
 ##To-do list
 - [x] Skeleton setup including HTML
@@ -13,8 +13,9 @@ To learn how to use riot, redis and socket together.
 - [x] Save all new incoming tasks to redis
 - [x] Render all tasks to the main page from redis
 - [x] Add riot functionality
+- [x] Mark item as checked on click
 - [ ] Enable cross browser automatic re rendering
-- [ ] Mark item as checked on click
+- [ ] Sort task list by something (category, time added, alphabetically)
 
 ##Biggest bugs
 - [ ] Remove setTimeout from `redis.js`
