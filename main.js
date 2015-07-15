@@ -1,7 +1,5 @@
 var socket = io();
 
-var tasks;
-
 // initial mount of riot tags with data from redis
 socket.on("allTasks", function(data) {
   // console.log("allTasks:", data);
@@ -13,7 +11,9 @@ function addTask (e) {
   e.preventDefault();
 
   var task = this.task.value;
-  socket.emit("task-submitted", task);
+  var category = e.target.className || "black";
+  console.log(e.target.className);
+  socket.emit("task-submitted", task, category);
   // reset text field to blank
   this.task.value = "";
 }

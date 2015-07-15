@@ -23,9 +23,9 @@ io.on("connection", function (socket) {
   });
 
   // when new task is created, store it to redis
-  socket.on("task-submitted", function(task) {
+  socket.on("task-submitted", function(task, category) {
 
-    redis.storeTask(task, function() {
+    redis.storeTask(task, category, function() {
 
       // once task is saved, read all from redis and emit to front end
       var allTasks = redis.readAllTasks(function(err, data) {

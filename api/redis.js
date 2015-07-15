@@ -24,7 +24,7 @@ function readAllTasks(callback) {
 }
 
 
-function storeTask(task, callback) {
+function storeTask(task, category, callback) {
 
   client.select(0, function() {
 
@@ -34,7 +34,7 @@ function storeTask(task, callback) {
       "id": id,
       "taskName": task,
       "done": "not-done",
-      "category": "black"
+      "category": category
     }, callback);
     client.sadd("idSet", id, function(err, reply) {
 
