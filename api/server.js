@@ -23,8 +23,7 @@ io.on("connection", function (socket) {
   });
 
   // when new task is created, store it to redis
-  socket.on("task-submitted", function (task) {
-    console.log("hello");
+  socket.on("task-submitted", function(task) {
 
     redis.storeTask(task, function() {
 
@@ -39,6 +38,22 @@ io.on("connection", function (socket) {
       });
     });
   });
+
+  socket.on("statusUpdate", function(taskId, taskStatus) {
+    redis.updateStatus(taskId, taskStatus, function() {
+
+      // once status is updated, read all from redis and emit to front end
+      var allTasks = redis.readAllTasks(function(err, data) {
+
+        if (err) {
+           console.log("status update error:", err);
+        } else {
+          socket.emit("update", data);
+        };
+      });
+    });
+  });
+
 });
 
 

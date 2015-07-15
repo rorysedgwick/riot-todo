@@ -15,3 +15,12 @@ function addTask (e) {
   // reset text field to blank
   this.task.value = "";
 }
+
+function toggle(e) {
+  console.log("this:", this);
+
+   var taskId = this.id;
+   var taskStatus = this.done;
+
+  socket.emit("statusUpdate", taskId, taskStatus);
+}

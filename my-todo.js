@@ -2,7 +2,7 @@ var socket = io();
 
 var tasks;
 
-riot.tag('my-todo', '<form onsubmit="{ addTask }"> <input type="text" name="task"> <input type="submit"> </form> <ul class="task-list"> <li each="{ opts.tasks }" class="{ status }"> { taskName }</li> </ul>', function(opts) {
+riot.tag('my-todo', '<form onsubmit="{ addTask }"> <input type="text" name="task"> <input type="submit"> </form> <ul class="task-list"> <li each="{ opts.tasks }" onclick="{ toggle }" class="{ done }"> { taskName }</li> </ul>', function(opts) {
 
   var that = this;
 
@@ -11,6 +11,7 @@ riot.tag('my-todo', '<form onsubmit="{ addTask }"> <input type="text" name="task
     opts.tasks = data;
     that.update();
   });
+
 
 
 });

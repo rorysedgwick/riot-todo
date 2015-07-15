@@ -1,0 +1,11 @@
+.not-done {
+  background-color: red;
+}
+
+.done {
+  background-color: green;
+}
+
+body {
+  background-color: aqua;
+}

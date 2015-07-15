@@ -11,6 +11,7 @@ function readAllTasks(callback) {
 
       // for each id return all hash info
       client.hgetall(key, function(err, reply) {
+        console.log("reply: ", reply);
         taskArray.push(reply);
       });
     });
@@ -30,8 +31,9 @@ function storeTask(task, callback) {
     // Random id for each task
     var id = Math.floor(Math.random() * 1000);
     client.hmset(id, {
+      "id": id,
       "taskName": task,
-      "status": "not-done",
+      "done": "not-done",
       "category": "red"
     }, callback);
     client.sadd("idSet", id, function(err, reply) {
@@ -48,7 +50,33 @@ function storeTask(task, callback) {
   });
 }
 
+function updateStatus(taskId, taskStatus, callback) {
+  console.log("updateStatus: ", taskId, taskStatus);
+
+  client.select(0, function() {
+
+    var update;
+    if (taskStatus == "not-done") {
+      update = "done"
+    } else {
+        update = "not-done"
+      }
+
+    client.hset(taskId, "done", update, function(err, reply) {
+
+      if (err) {
+        console.log("status update err:", err);
+      } else {
+        console.log("status update successful");
+
+        readAllTasks(callback);
+      }
+    })
+  });
+}
+
 module.exports = {
   readAllTasks: readAllTasks,
-  storeTask: storeTask
+  storeTask: storeTask,
+  updateStatus: updateStatus
 };
