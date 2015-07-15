@@ -34,7 +34,7 @@ function storeTask(task, callback) {
       "id": id,
       "taskName": task,
       "done": "not-done",
-      "category": "red"
+      "category": "black"
     }, callback);
     client.sadd("idSet", id, function(err, reply) {
 
@@ -51,7 +51,6 @@ function storeTask(task, callback) {
 }
 
 function updateStatus(taskId, taskStatus, callback) {
-  console.log("updateStatus: ", taskId, taskStatus);
 
   client.select(0, function() {
 
