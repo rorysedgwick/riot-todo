@@ -1,11 +1,36 @@
+li {
+  list-style-type: square;
+}
+
 .not-done {
-  background-color: red;
+  text-decoration: none;
 }
 
 .done {
-  background-color: green;
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
-body {
-  background-color: aqua;
+.submit {
+  color: rgb(37, 78, 208);
+}
+
+.main {
+  text-align: center;
+  display: block;
+  margin: 5% auto;
+  max-width: 50%;
+  font-family: Arial;
+  background-color: aliceblue;
+  color: rgb(37, 78, 208);
+  border: 4px solid rgb(37, 78, 208);
+  border-radius: 2px;
+}
+
+.task-list {
+  text-align: left;
+}
+
+.text-input:focus {
+  outline: rgb(37, 78, 208);
 }
