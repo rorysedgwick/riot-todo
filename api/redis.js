@@ -1,12 +1,15 @@
 var redis = require("redis");
 var client = redis.createClient();
 
-
+// read all tasks from redis and return
 function readAllTasks(callback) {
   var taskArray = [];
 
+  // fetches set of tasks ids
   client.smembers("idSet", function(err, reply) {
     reply.forEach(function(key) {
+
+      // for each id return all hash info
       client.hgetall(key, function(err, reply) {
         taskArray.push(reply);
       });
@@ -15,11 +18,9 @@ function readAllTasks(callback) {
 
   // Remove setTimeout when we have the time
   setTimeout(function() {
-    // console.log("taskArray in readAllTasks: ", taskArray);
     callback(null, taskArray);
   }, 500);
 };
-
 
 
 function storeTask(task, callback) {
@@ -34,8 +35,15 @@ function storeTask(task, callback) {
       "category": "red"
     }, callback);
     client.sadd("idSet", id, function(err, reply) {
-      if (err) console.log("id sadd err: ", err);
-      else console.log("id sadd successful");
+
+      if (err) {
+        console.log("id sadd err: ", err);
+      } else {
+        console.log("id sadd successful");
+
+        // once new task is added, return all data
+        readAllTasks(callback);
+      }
     });
   });
 }

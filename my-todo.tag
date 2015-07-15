@@ -1,13 +1,6 @@
-// Initializing a socket
 var socket = io();
 
-socket.on("connectionSuccess", function(socket) {
-  console.log("Connection successful");
-});
-
-socket.on("allTasks", function(data) {
-  console.log("allTasks", data);
-});
+var tasks;
 
 <my-todo>
   <form onsubmit={ addTask }>
@@ -16,25 +9,19 @@ socket.on("allTasks", function(data) {
   </form>
 
   <ul class="task-list">
-    <li each={ data } class={ status }> { taskName } </li>
+    <li each={ opts.tasks } class={ status }> { taskName }</li>
   </ul>
+
+  var that = this;
+
+  // when server sends new data, update task list
+  socket.on("update", function(data) {
+    console.log("updating");
+    opts.tasks = data;
+    that.update();
+  });
+
 </my-todo>
 
 
-// function renderTasks(data) {
-//   console.log("renderTasks data: ", data);
-//   data.forEach(function(task) {
-//     $('.task-list').append("<li class=" + task.status + "><span class=" + task.category + "></span> " + task.taskName + "</li>");
-//   });
-// }
 
-function addTask (e) {
-
-  e.preventDefault();
-  var task = this.task.value;
-  socket.emit("task-added", task);
-}
-
-// var taskArray = [];
-
-riot.mount("*");
