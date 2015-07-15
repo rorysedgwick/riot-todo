@@ -2,7 +2,7 @@ var socket = io();
 
 // initial mount of riot tags with data from redis
 socket.on("allTasks", function(data) {
-  console.log("allTasks:", data);
+  // console.log("allTasks:", data);
   riot.mount("*", { tasks: data });
 });
 
@@ -11,16 +11,17 @@ function addTask (e) {
   e.preventDefault();
 
   var task = this.task.value;
-  socket.emit("task-submitted", task);
+  var category = e.target.className || "black";
+  console.log(e.target.className);
+  socket.emit("task-submitted", task, category);
   // reset text field to blank
   this.task.value = "";
 }
 
 function toggle(e) {
-  console.log("this:", this);
 
-   var taskId = this.id;
-   var taskStatus = this.done;
+  var taskId = this.id;
+  var taskStatus = this.done;
 
   socket.emit("statusUpdate", taskId, taskStatus);
 }
