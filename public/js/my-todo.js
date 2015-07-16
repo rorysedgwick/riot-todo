@@ -5,8 +5,10 @@ riot.tag('my-todo', '<div class="main"> <header> <h2>What will I do today?</h2> 
   var that = this;
 
   socket.on("update", function(data) {
+
     console.log("updating tasks");
-    that.update(opts.tasks = data);
+    opts.tasks = data;
+    that.update();
   });
 
 

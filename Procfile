@@ -1,1 +1,1 @@
-web: npm run riot
+web: node app.js

@@ -18,7 +18,7 @@ io.on("connection", function (socket) {
     if (err) {
        console.log("readAllTasks error:", err);
     } else {
-      socket.emit("allTasks", data);
+      io.emit("allTasks", data);
     }
   });
 
@@ -33,7 +33,7 @@ io.on("connection", function (socket) {
         if (err) {
            console.log("readAllTasks error:", err);
         } else {
-          socket.emit("update", data);
+          io.emit("update", data);
         }
       });
     });
@@ -48,8 +48,7 @@ io.on("connection", function (socket) {
         if (err) {
            console.log("status update error:", err);
         } else {
-          console.log("emitting status update");
-          socket.emit("update", data);
+          io.emit("update", data);
         }
       });
     });
@@ -59,9 +58,5 @@ io.on("connection", function (socket) {
 
 
 server.route(routes);
-
-server.start(
-  console.log("server running at port " + server.info.port)
-);
 
 module.exports = server;
