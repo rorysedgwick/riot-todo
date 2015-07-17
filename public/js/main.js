@@ -13,8 +13,11 @@ function addTask (e) {
   var task = this.task.value;
   var category = e.target.className || "black";
 
-  socket.emit("task-submitted", task, category);
-
+  if (task === "") {
+    alert("There must be something you want to do!");
+  } else {
+    socket.emit("task-submitted", task, category);
+  }
   // reset text field to blank
   this.task.value = "";
 }
