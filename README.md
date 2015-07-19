@@ -6,6 +6,12 @@ A simple to do app built using riot.js, redis, and socket.io. What can we do in 
 ##Why?
 To learn how to use riot, redis and socket.io together.
 
+###To run locally:
+* ```git clone ``` and ```cd riot-todo```
+* ```npm install```
+* ```npm run watch``` will compile all tags & start server, while watching tags & api directories for changes and recompiling on save
+* visit ```localhost:8000 ```
+
 ##To-do list
 - [x] Skeleton setup including HTML
 - [x] Get socket.io working server => client
@@ -23,10 +29,10 @@ To learn how to use riot, redis and socket.io together.
 - [x] When we add a new task, they are all re-rendered
 
 ##Stretch and to-dos
-- [ ] Sort out file structure
+- [x] Sort out file structure
 - [x] Add CSS
 - [x] Add categories
-- [ ] Push to heroku
+- [x] Push to heroku
 
 Where we wanted to get to as a stretch goal for the day:
 ![img_4175](https://cloud.githubusercontent.com/assets/4185328/8679333/ff3d96d8-2a51-11e5-827a-535d97aafa51.jpg)

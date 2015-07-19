@@ -23,13 +23,18 @@ var socket = io();
     </ul>
   </div>
 
+  <script>
+
   var that = this;
   // when server sends new data, update task list
   socket.on("update", function(data) {
 
-    console.log("updating tasks");
+    console.log("updating tasks & watching working");
     opts.tasks = data;
     that.update();
   });
 
+  </script>
+
 </my-todo>
+

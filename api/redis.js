@@ -24,7 +24,7 @@ function readAllTasks(callback) {
         });
       });
     } else {
-      callback(null, taskArray)
+      callback(null, taskArray);
     }
   });
 }
@@ -61,9 +61,9 @@ function updateStatus(taskId, taskStatus, callback) {
 
     var update;
     if (taskStatus == "not-done") {
-      update = "done"
+      update = "done";
     } else {
-        update = "not-done"
+        update = "not-done";
       }
 
     client.hset(taskId, "done", update, function(err, reply) {
@@ -75,7 +75,7 @@ function updateStatus(taskId, taskStatus, callback) {
 
         readAllTasks(callback);
       }
-    })
+    });
   });
 }
 
