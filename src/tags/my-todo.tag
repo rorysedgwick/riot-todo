@@ -7,7 +7,7 @@ var socket = io();
     </header>
 
     <form onsubmit={ addTask }>
-      <input class="text-input" type="text" name="task" placeholder="Start with the 3 most important tasks!"/>
+      <input class="text-input" type="text" name="task" placeholder="Start with the 3 most important tasks!" required/>
       <button class="submit" type="submit">+</button>
       <div id="categories">
         <div class="dblue" onclick={ addTask }>+</div>
