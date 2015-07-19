@@ -29,7 +29,7 @@ var socket = io();
   // when server sends new data, update task list
   socket.on("update", function(data) {
 
-    console.log("updating tasks & watching working");
+    console.log("updating tasks");
     opts.tasks = data;
     that.update();
   });

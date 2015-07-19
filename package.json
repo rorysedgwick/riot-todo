@@ -13,7 +13,7 @@
     "test": "",
     "start": "node app.js",
     "watch": "npm run watch-tags & npm run watch-server",
-    "watch-tags": "nodemon --watch /src/**/*.tag --ext less --exec 'npm run riot'",
+    "watch-tags": "nodemon --watch /src/**/*.tag --exec 'npm run riot'",
     "watch-server": "nodemon --watch api/"
   },
   "repository": {
