@@ -6,10 +6,11 @@ riot.tag('my-todo', '<div class="main"> <header> <h2>What will I do today?</h2> 
 
   socket.on("update", function(data) {
 
-    console.log("updating tasks");
+    console.log("updating tasks & watching working");
     opts.tasks = data;
     that.update();
   });
 
-
+  
 });
+
